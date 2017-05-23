@@ -61,6 +61,14 @@ public class StringTest {
     }
 
     @Test
+    public void splitToListTest() throws Exception {
+        String sequence = "java ,scala, ,python       ,      go, , javascript";
+        List<String> strings = Splitter.on(',')
+                .splitToList(sequence);
+        System.out.println(strings); // [java , scala,  , python       ,       go,  ,  javascript]
+    }
+
+    @Test
     public void splitTrimResultTest() throws Exception {
         // 공백문자 제거
         String sequence = "java ,scala, ,python       ,      go, , javascript";
@@ -98,9 +106,16 @@ public class StringTest {
 
     @Test
     public void charMatcherTest() throws Exception {
+        // 숫자만 남긴다.
         System.out.println(CharMatcher.digit().retainFrom("gua1va")); // 1
+
+        // 숫자 또는 소문자만 남긴다.
         System.out.println(CharMatcher.digit().or(CharMatcher.javaLowerCase()).retainFrom("HELLO777guava")); // 777guava
+
+        // whitespace를 trim하고 띄어쓰기를 언더스코어로 변경한다.
         System.out.println(CharMatcher.whitespace().trimAndCollapseFrom("     my   first  guava ", '_')); // my_first_guava
+
+        // 숫자를 *로 replace한다.
         System.out.println(CharMatcher.digit().replaceFrom("guava999", "*")); // guava***
     }
 }

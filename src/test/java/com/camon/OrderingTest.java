@@ -99,6 +99,7 @@ public class OrderingTest {
     };
 
     List<Person> leastOfTeam = byName.leastOf(devTeam, 2);
+    System.out.println(devTeam); // [Person{id=1, name='jooyong', address='migum'}, Person{id=2, name='devhak', address='imae'}, Person{id=3, name='cjr', address='bokjeong'}]
     System.out.println(leastOfTeam); // [Person{id=3, name='cjr', address='bokjeong'}, Person{id=2, name='devhak', address='imae'}]
     assertEquals(2, leastOfTeam.size());
   }
